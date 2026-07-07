@@ -3,8 +3,8 @@ services:
     image: postgres:16-alpine
     container_name: eip-postgres
     environment:
-      POSTGRES_USER: integration_user
-      POSTGRES_PASSWORD: integration_password
+      POSTGRES_USER: eip_api
+      POSTGRES_PASSWORD: 7557
       POSTGRES_DB: enterprise_integration
     ports:
       - "5432:5432"
@@ -19,7 +19,7 @@ services:
     environment:
       NODE_ENV: development
       PORT: 3000
-      DATABASE_URL: postgres://integration_user:integration_password@postgres:5432/enterprise_integration
+      DATABASE_URL: postgres://eip_api:7557@postgres:5432/enterprise_integration
       API_KEY: local-dev-api-key
     ports:
       - "3000:3000"
@@ -28,4 +28,3 @@ services:
 
 volumes:
   postgres_data:
-
