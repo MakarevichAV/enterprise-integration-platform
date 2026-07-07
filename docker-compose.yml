@@ -1,0 +1,31 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: eip-postgres
+    environment:
+      POSTGRES_USER: integration_user
+      POSTGRES_PASSWORD: integration_password
+      POSTGRES_DB: enterprise_integration
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/migrations:/docker-entrypoint-initdb.d:ro
+
+  api:
+    build:
+      context: ./backend
+    container_name: eip-api
+    environment:
+      NODE_ENV: development
+      PORT: 3000
+      DATABASE_URL: postgres://integration_user:integration_password@postgres:5432/enterprise_integration
+      API_KEY: local-dev-api-key
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:
+
