@@ -14,6 +14,31 @@ Power Automate or SharePoint approval event sends an approved onboarding request
 6. If department is IT or Engineering, create equipment request.
 7. Notify HR and IT.
 
+## Workato Recipe Design
+
+Trigger options:
+
+- Webhook trigger: Power Automate sends an approved request to Workato.
+- SharePoint connector trigger: Workato watches the SharePoint list directly.
+
+Recommended learning version:
+
+```text
+Webhook trigger from Power Automate
+  -> validate fields
+  -> map payload
+  -> call Node.js API
+  -> call approved webhook
+  -> notify HR/IT
+```
+
+Why this version is useful:
+
+- It mirrors real iPaaS work.
+- It keeps Power Automate responsible for Microsoft approval.
+- It keeps Workato responsible for orchestration and external integrations.
+- It gives a clean place to practice retries, mappings, and conditions.
+
 ## Error Handling
 
 - On validation error: write failed integration run.
@@ -34,3 +59,8 @@ Power Automate or SharePoint approval event sends an approved onboarding request
 | Start Date | startDate |
 | Equipment Needed | equipmentNeeded |
 
+## Interview Notes
+
+Explain this recipe as an orchestration layer:
+
+> Power Automate handles the Microsoft approval experience, while Workato receives the approved business event, maps the data, calls the backend API, handles failures, and notifies downstream teams.

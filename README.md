@@ -73,7 +73,25 @@ The API is planned to run on `http://localhost:3000`.
 4. Inspect integration history through `GET /integration-runs`.
 5. Ask the AI Agent to summarize failed runs.
 
+Run the local backend demo:
+
+```bash
+./scripts/demo-onboarding-flow.sh
+```
+
+## Platform Learning Focus
+
+The backend exists so SharePoint, Power Automate, and Workato have a realistic target system to integrate with.
+
+Primary learning order:
+
+1. SharePoint Online list and views.
+2. Power Automate approval flow.
+3. Workato recipe design, mapping, and error handling.
+4. Backend API, PostgreSQL, logs, and idempotency.
+
+See [docs/platform-learning-roadmap.md](docs/platform-learning-roadmap.md).
+
 ## Weekly Study Plan
 
 See [docs/weekly-plan.md](docs/weekly-plan.md).
-
