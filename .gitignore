@@ -6,3 +6,4 @@ dist/
 postgres_data/
 *.log
 .gh/
+backend/.npm-cache/
